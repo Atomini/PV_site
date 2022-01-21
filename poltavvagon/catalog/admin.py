@@ -2,6 +2,18 @@ from django.contrib import admin
 from .models import *
 
 
+class AdditionalTankImageInline(admin.TabularInline):
+    model = AdditionalTankImage
+
+
+class AdditionalTankWagonImageInline(admin.TabularInline):
+    model = AdditionalTankWagonImage
+
+
+class AdditionalServicesImageInline(admin.TabularInline):
+    model = AdditionalServicesImage
+
+
 class ProductionCategoryAdmin(admin.ModelAdmin):
     pass
 
@@ -11,7 +23,7 @@ class MainBannerAdmin(admin.ModelAdmin):
 
 
 class TankAdmin(admin.ModelAdmin):
-    pass
+    inlines = (AdditionalTankImageInline,)
 
 
 class TransportedCargoAdmin(admin.ModelAdmin):
@@ -19,9 +31,14 @@ class TransportedCargoAdmin(admin.ModelAdmin):
 
 
 class TankWagonAdmin(admin.ModelAdmin):
-    pass
+    inlines = (AdditionalTankWagonImageInline,)
 
 
+class ServicesAdmin(admin.ModelAdmin):
+    inlines = (AdditionalServicesImageInline,)
+
+
+admin.site.register(Services, ServicesAdmin)
 admin.site.register(ProductionCategory, ProductionCategoryAdmin)
 admin.site.register(MainBanner, MainBannerAdmin)
 admin.site.register(Tank, TankAdmin)

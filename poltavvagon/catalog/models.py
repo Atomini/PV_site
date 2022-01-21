@@ -10,12 +10,20 @@ class MainBanner(models.Model):
     image = models.ImageField(verbose_name='Изображение баннера', blank=False, upload_to=get_timestamp_path)
     is_active = models.BooleanField(verbose_name='Активен?')
 
+    class Meta:
+        verbose_name = 'Банер'
+        verbose_name_plural = 'Банеры'
+
 
 class ProductionCategory(models.Model):
     category_name = models.CharField(max_length=100, verbose_name='Название продукции')
 
     def __str__(self):
         return self.category_name
+
+    class Meta:
+        verbose_name = 'Изделие'
+        verbose_name_plural = 'Изделия'
 
 
 class Tank(models.Model):
@@ -34,11 +42,22 @@ class Tank(models.Model):
                                          null=False)
     is_active = models.BooleanField(default=True, db_index=True, verbose_name='Выводить в списке?')
     poster_image = models.ImageField(blank=True, upload_to=get_timestamp_path, verbose_name='Главное изображение')
-    slider_image = models.ImageField(blank=True, upload_to=get_timestamp_path,
-                                     verbose_name='Дополнительные изображение')
 
     def __str__(self):
         return self.tank_name
+
+    class Meta:
+        verbose_name = 'Резервуар'
+        verbose_name_plural = 'Резервуары'
+
+
+class AdditionalTankImage(models.Model):
+    tank = models.ForeignKey(Tank, on_delete=models.CASCADE, verbose_name='Резервуар')
+    image = models.ImageField(upload_to=get_timestamp_path, verbose_name='Изображение')
+
+    class Meta:
+        verbose_name = 'Изображение для слайдера'
+        verbose_name_plural = 'Изображения для слайдера'
 
 
 class TransportedCargo(models.Model):
@@ -48,6 +67,10 @@ class TransportedCargo(models.Model):
 
     def __str__(self):
         return self.cargo_name
+
+    class Meta:
+        verbose_name = 'Перевозимый груз'
+        verbose_name_plural = 'Перевозимык грузы'
 
 
 class TankWagon(models.Model):
@@ -62,11 +85,42 @@ class TankWagon(models.Model):
     track_width = models.SmallIntegerField(verbose_name='Ширина колеи')
     transport_cargo = models.ForeignKey(TransportedCargo, on_delete=models.PROTECT, verbose_name='перевозимый груз')
     poster_image = models.ImageField(blank=True, upload_to=get_timestamp_path, verbose_name='Главное изображение')
-    slider_image = models.ImageField(blank=True, upload_to=get_timestamp_path,
-                                     verbose_name='Дополнительные изображение')
     product_category = models.ForeignKey(ProductionCategory, on_delete=models.CASCADE, verbose_name='Категория',
                                          null=False)
     is_active = models.BooleanField(default=True, db_index=True, verbose_name='Выводить в списке?')
 
     def __str__(self):
         return self.tank_wagon_name
+
+    class Meta:
+        verbose_name = 'Вагон цистерна'
+        verbose_name_plural = 'Вагоны цистерны'
+
+
+class AdditionalTankWagonImage(models.Model):
+    tank = models.ForeignKey(TankWagon, on_delete=models.CASCADE, verbose_name='Вагон-цистерна')
+    image = models.ImageField(upload_to=get_timestamp_path, verbose_name='Изображение')
+
+    class Meta:
+        verbose_name = 'Изображение для слайдера'
+        verbose_name_plural = 'Изображения для слайдера'
+
+
+class Services(models.Model):
+    name_services = models.CharField(max_length=100, verbose_name='Услуги')
+    video_link = models.URLField(verbose_name='Видео')
+    main_text = models.TextField(verbose_name='Основной текст')
+    article = models.CharField(max_length=200, verbose_name='Заголовок')
+
+    class Meta:
+        verbose_name = 'Услуга'
+        verbose_name_plural = 'Услуги'
+
+
+class AdditionalServicesImage(models.Model):
+    services = models.ForeignKey(Services, on_delete=models.CASCADE, verbose_name='Услуги')
+    image = models.ImageField(upload_to=get_timestamp_path, verbose_name='изображение')
+
+    class Meta:
+        verbose_name = 'Изображение для слайдера'
+        verbose_name_plural = 'Изображения для слайдера'
