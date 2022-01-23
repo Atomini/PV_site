@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 <html lang="ru">
+{% load static %}
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{% load catalog_tags %}
+{% bootstrap_javascript%}
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    {% load bootstrap5 %}
-    {% bootstrap_css %}
-    {% load static %}
+
     <link rel="stylesheet" type="text/css" href="{% static 'catalog/css/style.css' %}">
-    {% bootstrap_javascript%}
+
 
     <title>Полтаввагон | {% block title %}Производство цестерн и резервуаров{% endblock %}</title>
 </head>
@@ -42,70 +45,7 @@
     {% endblock %}
 
     {% block navbar %}
-        <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
-            <div class="container-fluid">
-                <div>
-                <a class="navbar-brand" href="/" >
-                   <img src="{% static 'catalog/image/logo-small.png' %}" width="70" height="70"
-                        class="d-inline-block align-middle" alt="LOGO" loading="lazy">
-                </a>
-                <a class="navbar-brand brand-text justify-content-md-left align-middle" href="/" >ПОЛТАВВАГОН</a>
-                </div>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <div class="collapse navbar-collapse justify-content-md-end" id="navbarNav">
-                    <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="{% url 'index' %}">Главная</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                               data-bs-toggle="dropdown" aria-expanded="false">Продукция</a>
-
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                {% for production_category in production %}
-                                    <li><a class="dropdown-item" href="{% url 'by_production' pk=production_category.pk %}">{{ production_category.category_name }}</a></li>
-                                {% endfor %}
-                            </ul>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                               data-bs-toggle="dropdown" aria-expanded="false">Услуги</a>
-
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                {% for service in services %}
-                                    <li><a class="dropdown-item" href="{% url 'by_services' pk=service.pk %}">{{ service.name_services }}</a></li>
-                                {% endfor %}
-                            </ul>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                               data-bs-toggle="dropdown" aria-expanded="false">Пресс-центр</a>
-
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#">Новости</a></li>
-                                <li><a class="dropdown-item" href="#">Сертификаты</a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button"
-                               data-bs-toggle="dropdown" aria-expanded="false">Компания</a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="/about">О Компании</a></li>
-                                <li><a class="dropdown-item" href="/management">Руководство</a></li>
-                                <li><a class="dropdown-item" href="/jobs">Вакансии</a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/contacts">Контакты</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
+        {% get_data_for_navbar %}
     {% endblock %}
 
     {% block banner %}

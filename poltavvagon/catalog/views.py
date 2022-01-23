@@ -11,7 +11,7 @@ def index(request):
     production = ProductionCategory.objects.all()
     services = Services.objects.all()
     context = {'production': production, 'services': services, }
-    return render(request, 'main/index.html', context)
+    return render(request, 'main/index.html')
 
 
 def by_production_category(request, pk):
