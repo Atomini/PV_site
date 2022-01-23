@@ -9,6 +9,10 @@ class MainBanner(models.Model):
     url = models.URLField(verbose_name='Ссылка')
     image = models.ImageField(verbose_name='Изображение баннера', blank=False, upload_to=get_timestamp_path)
     is_active = models.BooleanField(verbose_name='Активен?')
+    body = models.TextField(verbose_name='Описание', blank=True)
+
+    def __str__(self):
+        return self.name
 
     class Meta:
         verbose_name = 'Банер'
@@ -111,6 +115,9 @@ class Services(models.Model):
     video_link = models.URLField(verbose_name='Видео')
     main_text = models.TextField(verbose_name='Основной текст')
     article = models.CharField(max_length=200, verbose_name='Заголовок')
+
+    def __str__(self):
+        return self.name_services
 
     class Meta:
         verbose_name = 'Услуга'
