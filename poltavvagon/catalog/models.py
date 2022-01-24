@@ -10,6 +10,7 @@ class MainBanner(models.Model):
     image = models.ImageField(verbose_name='Изображение баннера', blank=False, upload_to=get_timestamp_path)
     is_active = models.BooleanField(verbose_name='Активен?')
     body = models.TextField(verbose_name='Описание', blank=True)
+    index = models.IntegerField(verbose_name='Индекс', blank=True, default=0)
 
     def __str__(self):
         return self.name

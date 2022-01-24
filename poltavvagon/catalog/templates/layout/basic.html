@@ -47,11 +47,18 @@
     {% block navbar %}
         {% get_data_for_navbar %}
     {% endblock %}
+    <div class="container">
+        {% block banner %}
+        {% endblock %}
+    </div>
 
-    {% block banner %}
-
+    {% block content %}
+        <div class="container" style="padding-bottom: 1300px ">dfghjkl;</div>
+    {% endblock %}
+    
+    {% block footer %}
+        <footer>lsdlfglkfg</footer>
     {% endblock %}
 
-<div class="conteiner" style="padding-bottom: 1300px ">dfghjkl;</div>
 </body>
 </html>

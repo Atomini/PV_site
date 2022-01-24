@@ -8,10 +8,9 @@ from django.template.loader import get_template
 
 
 def index(request):
-    production = ProductionCategory.objects.all()
-    services = Services.objects.all()
-    context = {'production': production, 'services': services, }
-    return render(request, 'main/index.html')
+    banner = MainBanner.objects.all()
+    context = {'banners': banner, }
+    return render(request, 'main/index.html', context=context)
 
 
 def by_production_category(request, pk):
