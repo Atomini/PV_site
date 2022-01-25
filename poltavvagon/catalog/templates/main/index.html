@@ -7,7 +7,7 @@
 
 
 
-    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+    <div id="carouselExampleIndicators" class="carousel slide banner" data-bs-ride="carousel">
         <ol class="carousel-indicators">
 
             {% for banner in banners %}
@@ -27,10 +27,10 @@
                      <div class="carousel-item ">
                 {% endif %}
 
-                    <img src="media/{{ banner.image }}" class="d-block w-100" alt="...">
+                    <img src="media/{{ banner.image }}" class="d-block w-100 banner-image" alt="...">
                     <div class="carousel-caption d-none d-md-block">
-                    <h5>{{ banner.name }}</h5>
-                    <p>{{ banner.body }}</p>
+                    <h5 class="banner-text">{{ banner.name }}</h5>
+                    <p class="banner-text">{{ banner.body }}</p>
                 </div>
             </div>
             {% endfor %}

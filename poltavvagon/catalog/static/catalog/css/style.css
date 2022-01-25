@@ -1,3 +1,7 @@
+body{
+    background-color: cadetblue;
+}
+
 .topbar {
     padding-bottom: 10px;
     padding-top: 10px;
@@ -39,3 +43,33 @@ a.text-custom-white {
     color: wheat;
 }
 
+.banner{
+    width: 100%;
+    height: 800px;
+    margin: 0;
+    overflow: hidden;
+    min-width: 100%;
+
+}
+
+.banner-image{
+    height: 800px;
+    width: 100%;
+    object-fit: cover; /*код слайдера размер под разные картики высота*/
+    opacity:0.6;
+    -moz-opacity:0.6;
+    -khtml-opacity: 0.6;
+    -webkit-filter: url(#blur);
+    filter: url(#blur);
+    -webkit-filter: blur(3px);
+    filter: blur(3px);
+    filter:progid:DXImageTransform.Microsoft.Blur(PixelRadius='3');
+    -webkit-transition: 1s -webkit-filter linear;
+    transition: 1s filter linear;
+}
+
+.banner-text{
+    color: #efefef;
+
+
+}
