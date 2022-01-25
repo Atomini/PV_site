@@ -1,5 +1,5 @@
 body{
-    background-color: cadetblue;
+    background-color: gainsboro;
 }
 
 .topbar {
@@ -26,11 +26,11 @@ body{
     }
 }
 
-a.text-custom-white:active, /* активная/посещенная ссылка */
-a.text-custom-white:hover,  /* при наведении */
-a.text-custom-white {
+a:active, /* активная/посещенная ссылка */
+a:hover,  /* при наведении */
+a {
     text-decoration: none;
-    color: wheat;
+    color: whitesmoke;
     padding-left: 20px;
     padding-right: 20px;
 }
@@ -49,16 +49,15 @@ a.text-custom-white {
     margin: 0;
     overflow: hidden;
     min-width: 100%;
-
 }
 
 .banner-image{
     height: 800px;
     width: 100%;
     object-fit: cover; /*код слайдера размер под разные картики высота*/
-    opacity:0.6;
-    -moz-opacity:0.6;
-    -khtml-opacity: 0.6;
+    opacity:0.8;
+    -moz-opacity:0.8;
+    -khtml-opacity: 0.8;
     -webkit-filter: url(#blur);
     filter: url(#blur);
     -webkit-filter: blur(3px);
@@ -70,6 +69,16 @@ a.text-custom-white {
 
 .banner-text{
     color: #efefef;
+}
 
+.copyright{
+    background-color: #0066CC;
+    padding: 20px 0;
+    color: whitesmoke;
+}
 
+.footer-cont{
+    background-color: gray;
+    padding: 10px 0;
+    color: whitesmoke;
 }

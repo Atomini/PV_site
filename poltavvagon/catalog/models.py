@@ -9,7 +9,7 @@ class MainBanner(models.Model):
     url = models.URLField(verbose_name='Ссылка')
     image = models.ImageField(verbose_name='Изображение баннера', blank=False, upload_to=get_timestamp_path)
     is_active = models.BooleanField(verbose_name='Активен?')
-    body = models.TextField(verbose_name='Описание', blank=True)
+    body = models.TextField(verbose_name='Описание', blank=True, max_length=250)
     index = models.IntegerField(verbose_name='Индекс', blank=True, default=0)
 
     def __str__(self):
