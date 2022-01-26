@@ -22,6 +22,8 @@ class MainBanner(models.Model):
 
 class ProductionCategory(models.Model):
     category_name = models.CharField(max_length=100, verbose_name='Название продукции')
+    prev_text = models.TextField(verbose_name='Основной текст', max_length=250, blank=True)
+    image = models.ImageField(upload_to=get_timestamp_path, verbose_name='Изображение превю', blank=True)
 
     def __str__(self):
         return self.category_name

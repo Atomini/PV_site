@@ -4,23 +4,23 @@
 {% load static %}
 
 {% block banner %}
-
-
-
     <div id="carouselExampleIndicators" class="carousel slide banner" data-bs-ride="carousel">
         <ol class="carousel-indicators">
 
             {% for banner in banners %}
+            {% if banner.is_active %}
                 {% if forloop.first %}
                     <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to={{ banner.index }} class="active"></li>
                 {% else %}
                     <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to={{ banner.index }} ></li>
                 {% endif %}
+            {% endif %}
             {% endfor %}
         </ol>
 
         <div class="carousel-inner">
             {% for banner in banners %}
+            {% if banner.is_active %}
                 {% if forloop.first %}
                     <div class="carousel-item active">
                 {% else %}
@@ -34,7 +34,9 @@
                     <a href="{{ banner.url }}"><button type="button" class="btn btn-outline-light">Детальнее</button></a>
                 </div>
             </div>
+            {% endif %}
             {% endfor %}
+
         </div>
 
         <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-bs-slide="prev">
@@ -47,4 +49,66 @@
         </a>
     </div>
  </div>
+{% endblock %}
+
+
+{% block content %}
+    <section class="section-padding about-us">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-5 col-lg-6">
+                    <img src="{% static 'catalog/image/vagon_more.jpg' %}" alt="about" class="img-fluid full-width">
+                </div>
+                <div class="col-xl-7 col-lg-6 align-self-center">
+
+                    <div class="about-left-side p-relative">
+                        <div class="section-header">
+                            <div class="section-heading">
+                                <h3 class="text-theme fw-700" style="padding: 25px; font-size: xx-large">О компании</h3>
+                            </div>
+                        </div>
+                        <div class="about-desc">
+                            <p class="text-light-white mb-xl-20" style="text-align: justify">ООО «Полтаввагон» - украинское производственное предприятие, которое ведет свою деятельность в сфере производства продукции для газодобывающей, нефтедобывающей, нефтехимической и другой промышленности и на данный момент выполняется процедура по постановке на производство вагоностроительной продукции, которую планируется завершить в этом году. Для этого уже изготовлено и прошли испытания с положительным заключением два опытных образца вагона-цистерны для растительных масел модели 15-1755П и вагон-цистерна для нефтепродуктов модели 15-1755.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <sections class="our-production">
+
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-5 col-lg-6">
+                    <img src="{% static 'catalog/image/vagon_more.jpg' %}" alt="about" class="img-fluid full-width">
+                </div>
+                <div class="col-xl-7 col-lg-6 align-self-center">
+
+                    <div class="about-left-side p-relative">
+                        <div class="section-header">
+                            <div class="section-heading">
+                                <h3 class="text-theme fw-700" style="padding: 25px; font-size: xx-large">О компании</h3>
+                            </div>
+                        </div>
+                        <div class="about-desc">
+                            <p class="text-light-white mb-xl-20" style="text-align: justify">ООО «Полтаввагон» - украинское производственное предприятие, которое ведет свою деятельность в сфере производства продукции для газодобывающей, нефтедобывающей, нефтехимической и другой промышленности и на данный момент выполняется процедура по постановке на производство вагоностроительной продукции, которую планируется завершить в этом году. Для этого уже изготовлено и прошли испытания с положительным заключением два опытных образца вагона-цистерны для растительных масел модели 15-1755П и вагон-цистерна для нефтепродуктов модели 15-1755.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </sections>
+
+     <sections class="our-services">
+
+    </sections>
+
+
+    <section class="news">
+
+    </section>
+
 {% endblock %}
