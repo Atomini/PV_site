@@ -121,8 +121,9 @@ class Services(models.Model):
     name_services = models.CharField(max_length=100, verbose_name='Услуги')
     video_link = models.URLField(verbose_name='Видео')
     main_text = models.TextField(verbose_name='Основной текст')
-    article = models.CharField(max_length=200, verbose_name='Заголовок')
-    slug = models.SlugField(auto_created=True, blank=False)
+    article = models.CharField(max_length=250, verbose_name='Текст превю')
+    slug = models.SlugField(auto_created=True, blank=False, null=True)
+    image = models.ImageField(upload_to=get_timestamp_path, verbose_name='Изображение превю', blank=True)
 
     def __str__(self):
         return self.name_services
