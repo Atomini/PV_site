@@ -17,14 +17,6 @@ body{
     padding: 0;
 }
 
-@media (max-width: 768px) {
-    .topbar{
-        display: none;
-    }
-    .brand-text{
-        font-size: 18px;
-    }
-}
 
 a:active, /* активная/посещенная ссылка */
 a:hover,  /* при наведении */
@@ -79,14 +71,59 @@ a {
 
 .footer-cont{
     background-color: gray;
+    opacity: 0.8;
     padding: 10px 0;
     color: whitesmoke;
 }
 
 .contact-footer{
-    padding: 8px 4px;
+    padding: 4px 4px;
 }
 
 .about-us{
     padding: 80px;
+}
+
+.head-prod{
+    padding-bottom: 30px;
+}
+
+.footer-logo{
+    vertical-align: middle;
+    horiz-align: center;
+}
+
+@media (max-width: 768px) {
+    .topbar{
+        display: none;
+    }
+    .brand-text{
+        font-size: 18px;
+    }
+    .section-padding.about-us{
+        padding: 20px 2px 20px 2px ;
+    }
+    .banner{
+        height: 400px;
+    }
+    .banner-image{
+        height: 400px;
+    }
+    .footer-cont{
+        font-size: small;
+    }
+    .footer-logo{
+        display: none;
+    }
+}
+
+@media (max-width: 400px) {
+    .footer-cont{
+        display: none;
+    }
+    .copyright{
+        font-size: xx-small;
+        padding: 3px;
+    }
+
 }

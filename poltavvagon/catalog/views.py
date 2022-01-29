@@ -9,15 +9,17 @@ from django.template.loader import get_template
 
 def index(request):
     banner = MainBanner.objects.all()
-    context = {'banners': banner, }
+    production_category = ProductionCategory.objects.all()
+    services = Services.objects.all()
+    context = {'banners': banner, 'production_category': production_category, 'services': services}
     return render(request, 'main/index.html', context=context)
 
 
-def by_production_category(request, pk):
+def by_production_category(request, slug):
     pass
 
 
-def by_services(request, pk):
+def by_services(request, slug):
     pass
 
 

@@ -4,13 +4,13 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-2">
-                        <img src="{% static 'catalog/image/logo-small.png' %}" alt="logo">
+                        <img class="footer-logo" src="{% static 'catalog/image/logo-small.png' %}" alt="logo">
                     </div>
                     <div class="col-md-3">
                         <h4>Продукция</h4>
 
                             {% for production_category in production %}
-                                <div><a style="padding: 0" class="col-md-auto col-topbar contact-footer" href="{% url 'by_production' pk=production_category.pk %}">{{ production_category.category_name }}</a></div>
+                                <div class="col-md-auto offset-md-auto col-topbar contact-footer"><a class="text-custom-white" href="{% url 'by_production' slug=production_category.slug %}">{{ production_category.category_name }}</a></div>
                             {% endfor %}
 
                     </div>
@@ -18,7 +18,7 @@
                         <h4>Послуги</h4>
 
                            {% for service in services %}
-                                    <div><a  style="padding: 0" class="col-md-auto col-topbar contact-footer" href="{% url 'by_services' pk=service.pk %}">{{ service.name_services }}</a></div>
+                                    <div class="col-md-auto offset-md-auto col-topbar contact-footer"><a class="text-custom-white" href="{% url 'by_services' slug=service.slug %}">{{ service.name_services }}</a></div>
                            {% endfor %}
 
                     </div>

@@ -15,7 +15,7 @@ class AdditionalServicesImageInline(admin.TabularInline):
 
 
 class ProductionCategoryAdmin(admin.ModelAdmin):
-    pass
+    prepopulated_fields = {'slug': ('category_name',)}
 
 
 class MainBannerAdmin(admin.ModelAdmin):
@@ -23,6 +23,7 @@ class MainBannerAdmin(admin.ModelAdmin):
 
 
 class TankAdmin(admin.ModelAdmin):
+    prepopulated_fields = {'slug': ('tank_name', )}
     inlines = (AdditionalTankImageInline,)
 
 
@@ -31,10 +32,12 @@ class TransportedCargoAdmin(admin.ModelAdmin):
 
 
 class TankWagonAdmin(admin.ModelAdmin):
+    prepopulated_fields = {'slug': ('tank_wagon_name',)}
     inlines = (AdditionalTankWagonImageInline,)
 
 
 class ServicesAdmin(admin.ModelAdmin):
+    prepopulated_fields = {'slug': ('name_services',)}
     inlines = (AdditionalServicesImageInline,)
 
 

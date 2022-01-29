@@ -25,7 +25,7 @@
 
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 {% for production_category in production %}
-                                    <li><a class="dropdown-item" href="{% url 'by_production' pk=production_category.pk %}">{{ production_category.category_name }}</a></li>
+                                    <li><a class="dropdown-item" href="{% url 'by_production' slug=production_category.slug %}">{{ production_category.category_name }}</a></li>
                                 {% endfor %}
                             </ul>
                         </li>
@@ -35,7 +35,7 @@
 
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 {% for service in services %}
-                                    <li><a class="dropdown-item" href="{% url 'by_services' pk=service.pk %}">{{ service.name_services }}</a></li>
+                                    <li><a class="dropdown-item" href="{% url 'by_services' slug=service.slug %}">{{ service.name_services }}</a></li>
                                 {% endfor %}
                             </ul>
                         </li>

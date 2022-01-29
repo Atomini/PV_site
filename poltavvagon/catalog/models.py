@@ -1,5 +1,6 @@
 from django.db import models
 from .untilities import get_timestamp_path
+from pytils.translit import slugify
 
 
 # Create your models here.
@@ -24,6 +25,7 @@ class ProductionCategory(models.Model):
     category_name = models.CharField(max_length=100, verbose_name='Название продукции')
     prev_text = models.TextField(verbose_name='Основной текст', max_length=250, blank=True)
     image = models.ImageField(upload_to=get_timestamp_path, verbose_name='Изображение превю', blank=True)
+    slug = models.SlugField(auto_created=True, blank=False)
 
     def __str__(self):
         return self.category_name
@@ -49,6 +51,7 @@ class Tank(models.Model):
                                          null=False)
     is_active = models.BooleanField(default=True, db_index=True, verbose_name='Выводить в списке?')
     poster_image = models.ImageField(blank=True, upload_to=get_timestamp_path, verbose_name='Главное изображение')
+    slug = models.SlugField(auto_created=True, blank=False)
 
     def __str__(self):
         return self.tank_name
@@ -95,6 +98,7 @@ class TankWagon(models.Model):
     product_category = models.ForeignKey(ProductionCategory, on_delete=models.CASCADE, verbose_name='Категория',
                                          null=False)
     is_active = models.BooleanField(default=True, db_index=True, verbose_name='Выводить в списке?')
+    slug = models.SlugField(auto_created=True, blank=False)
 
     def __str__(self):
         return self.tank_wagon_name
@@ -118,6 +122,7 @@ class Services(models.Model):
     video_link = models.URLField(verbose_name='Видео')
     main_text = models.TextField(verbose_name='Основной текст')
     article = models.CharField(max_length=200, verbose_name='Заголовок')
+    slug = models.SlugField(auto_created=True, blank=False)
 
     def __str__(self):
         return self.name_services
