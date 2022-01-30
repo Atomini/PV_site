@@ -1,0 +1,66 @@
+{% extends 'layout/basic.html' %}
+{% load static %}
+
+
+{% block content %}
+
+    <div class="container-fluid" style="padding: 0">
+        <img  style="height: 300px" src="{% static 'catalog/image/contact.jpg' %}" class="img-fluid static-banner" alt="...">
+        <div class="static-banner-text"><h2>Контакты</h2></div>
+    </div>
+
+    <script src="{% static 'catalog/js/map.js' %}"></script>
+    <div class="container static-content" >
+        <div class="row">
+            <div class="col">
+
+                    <div class="personal">
+                        <div class="personal-item">
+                            <span>Помощник генерального директора</span>
+                            <div class="personal-item-details">
+                                <p class="static-link">Левадная Татьяна Владимировна</p>
+                                <p class="static-link">Телефон: <a class="static-link" href="tel:+380503041046">+380503041046</a></p>
+                                <p class="static-link">Email: <a class="static-link" href="mailto:poltavvagon@gmail.com">poltavvagon@gmail.com</a></p>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="personal-item">
+                            <span>Начальник коммерческого отдела</span>
+                            <div class="personal-item-details">
+                                <p class="static-link">Супрунова Татьяна Алексеевна</p>
+                                <p class="static-link">Телефон: <a class="static-link" href="tel:+380503049667">+380503049667</a></p>
+                                <p class="static-link">Email: <a class="static-link" href="mailto:poltavvagon.kommerc@gmail.com">poltavvagon.kommerc@gmail.com</a></p>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="personal-item">
+                            <span>Главный бухгалтер</span>
+                            <div class="personal-item-details">
+                                <p class="static-link">Кривоносова Ирина Николаевна</p>
+                                <p class="static-link">Телефон: <a class="static-link" href="tel:+380951543405">+380951543405</a></p>
+                                <p class="static-link">Email: <a  class="static-link" href="mailto:poltavvagon.buh22@gmail.com">poltavvagon.buh22@gmail.com</a></p>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="personal-item">
+                            <span>Начальник отдела управления персоналом</span>
+                            <div class="personal-item-details">
+                                <p class="static-link" >Гончар Диана Дмитриевна</p>
+                                <p class="static-link" >Телефон: <a class="static-link" href="tel:+380996385269">+380996385269</a></p>
+                                <p class="static-link">Email: <a class="static-link" href="mailto:kadrypoltavvagon@gmail.com">kadrypoltavvagon@gmail.com</a></p>
+                            </div>
+                        </div>
+                        <hr>
+                    </div>
+
+            </div>
+            <div class="col">
+                <div id="map"></div>
+                <script
+                  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDkn2_nNRCUDuu6M9IVEnUUPQW7WnlVQaI&callback=initMap&libraries=&v=weekly"
+                  async
+                ></script></div>
+        </div>
+    </div>
+
+{% endblock %}

@@ -108,6 +108,52 @@ a.card-catalog{
     horiz-align: center;
 }
 
+.static-banner{
+    height: 300px;
+    width: 100%;
+    object-fit: cover;
+    position: relative;
+    text-align: center;
+
+    opacity:0.8;
+    -moz-opacity:0.8;
+    -khtml-opacity: 0.8;
+    -webkit-filter: url(#blur);
+    filter: url(#blur);
+    -webkit-filter: blur(1px);
+    filter: blur(1px);
+    filter:progid:DXImageTransform.Microsoft.Blur(PixelRadius='3');
+    -webkit-transition: 1s -webkit-filter linear;
+    transition: 1s filter linear;
+
+}
+
+.static-banner-text{
+    position: absolute;
+    top: 30%;
+    left: 50px;
+
+}
+
+.static-content{
+    padding: 80px 0 80px 0;
+}
+
+#map {
+  height: 400px;
+  width: 100%;
+
+}
+
+.personal-item-details{
+    padding: 0;
+}
+
+.static-link{
+    color: black;
+    margin: 2px;
+}
+
 @media (max-width: 768px) {
     .topbar{
         display: none;
@@ -129,6 +175,10 @@ a.card-catalog{
     }
     .footer-logo{
         display: none;
+    }
+    .static-banner{
+        height: auto;
+        width: auto;
     }
 }
 
