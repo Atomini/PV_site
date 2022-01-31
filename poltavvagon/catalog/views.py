@@ -1,10 +1,10 @@
 from django.http import Http404, HttpResponse
 from django.shortcuts import render
-from .models import *
-
-# Create your views here.
 from django.template import TemplateDoesNotExist
 from django.template.loader import get_template
+from django.views.generic.list import ListView
+
+from .models import *
 
 
 def index(request):
@@ -15,8 +15,8 @@ def index(request):
     return render(request, 'main/index.html', context=context)
 
 
-def by_production_category(request, slug):
-    pass
+class ProductionListView(ListView):
+    model = ProductionCategory
 
 
 def by_services(request, slug):

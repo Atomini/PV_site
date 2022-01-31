@@ -3,8 +3,7 @@ from .untilities import get_timestamp_path
 from pytils.translit import slugify
 
 
-# Create your models here.
-
+# -------------- Модели для основного баннера ------------
 class MainBanner(models.Model):
     name = models.CharField(max_length=150, verbose_name='Подпись баннера')
     url = models.URLField(verbose_name='Ссылка')
@@ -21,11 +20,13 @@ class MainBanner(models.Model):
         verbose_name_plural = 'Банеры'
 
 
+# -------------- Модель для продукции ------------
 class ProductionCategory(models.Model):
     category_name = models.CharField(max_length=100, verbose_name='Название продукции')
     prev_text = models.TextField(verbose_name='Основной текст', max_length=250, blank=True)
     image = models.ImageField(upload_to=get_timestamp_path, verbose_name='Изображение превю', blank=True)
     slug = models.SlugField(auto_created=True, blank=False)
+    text = models.TextField(verbose_name='Текст на странице', blank=True)
 
     def __str__(self):
         return self.category_name
@@ -35,8 +36,41 @@ class ProductionCategory(models.Model):
         verbose_name_plural = 'Изделия'
 
 
+# -------------- Модели для  другой продукции  ------------
+class OtherProduction(models.Model):
+    name = models.CharField(max_length=200, verbose_name='Название')
+    prev_text = models.TextField(max_length=600, verbose_name='Текст превю', blank=True)
+    poster_image = models.ImageField(blank=True, upload_to=get_timestamp_path, verbose_name='Главное изображение')
+    description = models.TextField(blank=False, verbose_name='Описание')
+    characteristic = models.TextField(blank=True, verbose_name='Характиристики')
+    product_category = models.ForeignKey(ProductionCategory, on_delete=models.CASCADE, verbose_name='Категория',
+                                         null=False)
+    is_active = models.BooleanField(default=True, db_index=True, verbose_name='Выводить в списке?')
+    slug = models.SlugField(auto_created=True, blank=False)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = 'Другая продукция'
+        verbose_name_plural = 'Другая продукция'
+
+
+class AdditionalOtherProductionImage(models.Model):
+    production = models.ForeignKey(OtherProduction, on_delete=models.CASCADE, verbose_name='Продукция')
+    image = models.ImageField(upload_to=get_timestamp_path, verbose_name='Изображение')
+
+    class Meta:
+        verbose_name = 'Изображение для слайдера'
+        verbose_name_plural = 'Изображения для слайдера'
+
+
+# -------------- Модели для резервуара ------------
 class Tank(models.Model):
-    tank_name = models.CharField(max_length=200, verbose_name='Название резервуара')
+    name = models.CharField(max_length=200, verbose_name='Название резервуара')
+    prev_text = models.TextField(max_length=600, verbose_name='Текст превю', blank=True)
+    poster_image = models.ImageField(blank=True, upload_to=get_timestamp_path, verbose_name='Главное изображение')
+
     working_medium = models.TextField(verbose_name='Рабочая среда')
     nominal_volume = models.CharField(max_length=10, verbose_name='Объем номинальной, м3')
     tank_diameter = models.SmallIntegerField(verbose_name='Диаметр резервуара, мм')
@@ -50,11 +84,10 @@ class Tank(models.Model):
     product_category = models.ForeignKey(ProductionCategory, on_delete=models.CASCADE, verbose_name='Категория',
                                          null=False)
     is_active = models.BooleanField(default=True, db_index=True, verbose_name='Выводить в списке?')
-    poster_image = models.ImageField(blank=True, upload_to=get_timestamp_path, verbose_name='Главное изображение')
     slug = models.SlugField(auto_created=True, blank=False)
 
     def __str__(self):
-        return self.tank_name
+        return self.name
 
     class Meta:
         verbose_name = 'Резервуар'
@@ -70,6 +103,7 @@ class AdditionalTankImage(models.Model):
         verbose_name_plural = 'Изображения для слайдера'
 
 
+# -------------- Модели для вагона ------------
 class TransportedCargo(models.Model):
     cargo_name = models.CharField(max_length=100, verbose_name='Наименование груза')
     code_ETSNG = models.CharField(max_length=10, verbose_name='Код ЕТСНГ')
@@ -84,7 +118,10 @@ class TransportedCargo(models.Model):
 
 
 class TankWagon(models.Model):
-    tank_wagon_name = models.CharField(max_length=200, verbose_name='Название резервуара')
+    name = models.CharField(max_length=200, verbose_name='Название резервуара')
+    prev_text = models.TextField(max_length=600, verbose_name='Текст превю', blank=True)
+    poster_image = models.ImageField(blank=True, upload_to=get_timestamp_path, verbose_name='Главное изображение')
+
     load_capacity = models.FloatField(verbose_name='Грузоподъемность')
     max_tare_weight = models.FloatField(verbose_name='максимальная масса тары')
     min_tare_weight = models.FloatField(verbose_name='минимальная масса тары')
@@ -94,14 +131,13 @@ class TankWagon(models.Model):
     dimension = models.CharField(max_length=20, verbose_name='Габарит')
     track_width = models.SmallIntegerField(verbose_name='Ширина колеи')
     transport_cargo = models.ForeignKey(TransportedCargo, on_delete=models.PROTECT, verbose_name='перевозимый груз')
-    poster_image = models.ImageField(blank=True, upload_to=get_timestamp_path, verbose_name='Главное изображение')
     product_category = models.ForeignKey(ProductionCategory, on_delete=models.CASCADE, verbose_name='Категория',
                                          null=False)
     is_active = models.BooleanField(default=True, db_index=True, verbose_name='Выводить в списке?')
     slug = models.SlugField(auto_created=True, blank=False)
 
     def __str__(self):
-        return self.tank_wagon_name
+        return self.name
 
     class Meta:
         verbose_name = 'Вагон цистерна'
@@ -117,6 +153,7 @@ class AdditionalTankWagonImage(models.Model):
         verbose_name_plural = 'Изображения для слайдера'
 
 
+# -------------- Модели для услуг ------------
 class Services(models.Model):
     name_services = models.CharField(max_length=100, verbose_name='Услуги')
     video_link = models.URLField(verbose_name='Видео')

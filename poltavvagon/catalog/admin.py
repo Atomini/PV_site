@@ -14,6 +14,10 @@ class AdditionalServicesImageInline(admin.TabularInline):
     model = AdditionalServicesImage
 
 
+class AdditionalOtherProductionImageInline(admin.TabularInline):
+    model = AdditionalOtherProductionImage
+
+
 class ProductionCategoryAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('category_name',)}
 
@@ -23,7 +27,7 @@ class MainBannerAdmin(admin.ModelAdmin):
 
 
 class TankAdmin(admin.ModelAdmin):
-    prepopulated_fields = {'slug': ('tank_name', )}
+    prepopulated_fields = {'slug': ('name', )}
     inlines = (AdditionalTankImageInline,)
 
 
@@ -32,7 +36,7 @@ class TransportedCargoAdmin(admin.ModelAdmin):
 
 
 class TankWagonAdmin(admin.ModelAdmin):
-    prepopulated_fields = {'slug': ('tank_wagon_name',)}
+    prepopulated_fields = {'slug': ('name',)}
     inlines = (AdditionalTankWagonImageInline,)
 
 
@@ -41,6 +45,12 @@ class ServicesAdmin(admin.ModelAdmin):
     inlines = (AdditionalServicesImageInline,)
 
 
+class OtherProductionAdmin(admin.ModelAdmin):
+    prepopulated_fields = {'slug': ('name',)}
+    inlines = (AdditionalOtherProductionImageInline,)
+
+
+admin.site.register(OtherProduction, OtherProductionAdmin)
 admin.site.register(Services, ServicesAdmin)
 admin.site.register(ProductionCategory, ProductionCategoryAdmin)
 admin.site.register(MainBanner, MainBannerAdmin)
