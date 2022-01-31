@@ -1,0 +1,15 @@
+{% extends 'layout/basic.html' %}
+
+{% block title %}
+    {{ category.category_name }}
+{% endblock %}
+
+{% block content %}
+    {{ category.name }}
+    {{ category.prev_text }}
+    {{ category.image }}
+    {{ category.text }}
+    <br>
+
+
+{% endblock %}

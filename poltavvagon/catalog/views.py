@@ -15,8 +15,11 @@ def index(request):
     return render(request, 'main/index.html', context=context)
 
 
-class ProductionListView(ListView):
-    model = ProductionCategory
+def by_production(request, slug):
+    category = ProductionCategory.objects.get(slug=slug)
+    # category_items = ProductionCategory.objects.prefetch_related().all()
+    context = {'category': category, }
+    return render(request, 'main/category.html', context=context)
 
 
 def by_services(request, slug):
