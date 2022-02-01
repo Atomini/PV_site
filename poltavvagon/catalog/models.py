@@ -161,6 +161,7 @@ class Services(models.Model):
     article = models.CharField(max_length=250, verbose_name='Текст превю')
     slug = models.SlugField(auto_created=True, blank=False, null=True)
     image = models.ImageField(upload_to=get_timestamp_path, verbose_name='Изображение превю', blank=True)
+    is_active = models.BooleanField(default=True, db_index=True, verbose_name='Выводить в списке?')
 
     def __str__(self):
         return self.name_services

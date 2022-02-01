@@ -1,0 +1,17 @@
+{% extends 'layout/basic.html' %}
+
+{% block title %} {{ service.name_services }} {% endblock %}
+
+{% block content %}
+    {{ service.name_services }}
+    <br>
+    {{ service.video_link }}
+    <br>
+    {{ service.main_text }}
+    <br>
+    {{ service.article }}
+    <br>
+    {{ service.image }}
+    <br>
+
+{% endblock %}

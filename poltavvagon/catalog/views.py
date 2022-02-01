@@ -2,7 +2,7 @@ from django.http import Http404, HttpResponse
 from django.shortcuts import render
 from django.template import TemplateDoesNotExist
 from django.template.loader import get_template
-from django.views.generic.list import ListView
+
 
 from .models import *
 
@@ -25,13 +25,14 @@ def by_production(request, slug):
         template = 'main/category_vagon.html'
     else:
         template = 'main/category_other.html'
-
     context = {'category': category, 'category_items': category_items}
     return render(request, template_name=template, context=context)
 
 
 def by_services(request, slug):
-    pass
+    service = Services.objects.get(is_active=True, slug=slug)
+    context = {'service': service, }
+    return render(request, 'main/service.html', context=context)
 
 
 def static_page(request, page):
