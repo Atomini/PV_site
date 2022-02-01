@@ -17,9 +17,17 @@ def index(request):
 
 def by_production(request, slug):
     category = ProductionCategory.objects.get(slug=slug)
-    # category_items = ProductionCategory.objects.prefetch_related().all()
-    context = {'category': category, }
-    return render(request, 'main/category.html', context=context)
+    category_items = Tank.objects.filter(is_active=True, product_category=category.id)
+
+    if slug == 'rezervuaryi':
+        template = 'main/category_tank.html'
+    elif slug == 'vagonyi':
+        template = 'main/category_vagon.html'
+    else:
+        template = 'main/category_other.html'
+
+    context = {'category': category, 'category_items': category_items}
+    return render(request, template_name=template, context=context)
 
 
 def by_services(request, slug):

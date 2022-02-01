@@ -154,6 +154,10 @@ a.card-catalog{
     margin: 2px;
 }
 
+.prev-text{
+    padding: 80px 0 40px 0;
+}
+
 @media (max-width: 768px) {
     .topbar{
         display: none;

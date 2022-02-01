@@ -1,0 +1,38 @@
+{% extends 'layout/basic.html' %}
+{% load static %}
+
+{% block title %}
+    {{ category.category_name }}
+{% endblock %}
+
+{% block content %}
+
+    <div class="container-fluid" style="padding: 0">
+        <img  style="height: 300px" src="/media/{{ category.image }}" class="img-fluid static-banner" alt="...">
+        <div class="static-banner-text"><h2>{{ category.category_name }}</h2></div>
+    </div>
+
+
+    <div class="container">
+        <div class="prev-text">{{ category.text }}</div>
+    </div>
+
+    <br>
+    <div class="container">
+    <div class="row row-cols-1 row-cols-md-2 g-4">
+        <div class="col">
+            {% for item in category_items %}
+                <div class="card">
+                    <img src="/media/{{ item.poster_image }}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ item.name }}</h5>
+                        <p class="card-text">{{ item.prev_text }}</p>
+                        <a href="/#" class="btn btn-secondary btn-lg" tabindex="-1" role="button" aria-disabled="true">Подробнее</a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    </div>
+
+{% endblock %}
