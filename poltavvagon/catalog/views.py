@@ -29,6 +29,14 @@ def by_production(request, slug):
     return render(request, template_name=template, context=context)
 
 
+def tank_detail(request, slug):
+    tank = Tank.objects.get(slug=slug)
+
+    additional_image = AdditionalTankImage.objects.filter(tank_id=tank.id)
+    context = {"tank": tank, 'additional_image': additional_image, }
+    return render(request, 'main/tank.html', context=context)
+
+
 def by_services(request, slug):
     service = Services.objects.get(is_active=True, slug=slug)
     context = {'service': service, }

@@ -1,0 +1,19 @@
+{% extends 'layout/basic.html' %}
+{% load static %}
+
+{% block title %}
+    {{ tank.name }}
+{% endblock %}
+
+
+{% block content %}
+
+    {{ tank.max_operating_temperature }}
+
+    {% for image in additional_image %}
+        {{ image.image }}
+    {% endfor %}
+
+
+{% endblock %}
+

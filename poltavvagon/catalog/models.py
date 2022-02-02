@@ -25,7 +25,7 @@ class ProductionCategory(models.Model):
     category_name = models.CharField(max_length=100, verbose_name='Название продукции')
     prev_text = models.TextField(verbose_name='Основной текст', max_length=250, blank=True)
     image = models.ImageField(upload_to=get_timestamp_path, verbose_name='Изображение превю', blank=True)
-    slug = models.SlugField(auto_created=True, blank=False)
+    slug = models.SlugField(auto_created=True, blank=False, unique=True)
     text = models.TextField(verbose_name='Текст на странице', blank=True)
 
     def __str__(self):
@@ -46,7 +46,7 @@ class OtherProduction(models.Model):
     product_category = models.ForeignKey(ProductionCategory, on_delete=models.CASCADE, verbose_name='Категория',
                                          null=False)
     is_active = models.BooleanField(default=True, db_index=True, verbose_name='Выводить в списке?')
-    slug = models.SlugField(auto_created=True, blank=False)
+    slug = models.SlugField(auto_created=True, blank=False, unique=True)
 
     def __str__(self):
         return self.name
@@ -84,7 +84,7 @@ class Tank(models.Model):
     product_category = models.ForeignKey(ProductionCategory, on_delete=models.CASCADE, verbose_name='Категория',
                                          null=False)
     is_active = models.BooleanField(default=True, db_index=True, verbose_name='Выводить в списке?')
-    slug = models.SlugField(auto_created=True, blank=False)
+    slug = models.SlugField(auto_created=True, blank=False, unique=True)
 
     def __str__(self):
         return self.name
@@ -134,7 +134,7 @@ class TankWagon(models.Model):
     product_category = models.ForeignKey(ProductionCategory, on_delete=models.CASCADE, verbose_name='Категория',
                                          null=False)
     is_active = models.BooleanField(default=True, db_index=True, verbose_name='Выводить в списке?')
-    slug = models.SlugField(auto_created=True, blank=False)
+    slug = models.SlugField(auto_created=True, blank=False, unique=True)
 
     def __str__(self):
         return self.name
@@ -159,7 +159,7 @@ class Services(models.Model):
     video_link = models.URLField(verbose_name='Видео')
     main_text = models.TextField(verbose_name='Основной текст')
     article = models.CharField(max_length=250, verbose_name='Текст превю')
-    slug = models.SlugField(auto_created=True, blank=False, null=True)
+    slug = models.SlugField(auto_created=True, blank=False, null=True, unique=True)
     image = models.ImageField(upload_to=get_timestamp_path, verbose_name='Изображение превю', blank=True)
     is_active = models.BooleanField(default=True, db_index=True, verbose_name='Выводить в списке?')
 

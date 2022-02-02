@@ -8,6 +8,7 @@ urlpatterns = [
     path('production/<slug:slug>', by_production, name='by_production'),
     path('services/<slug:slug>', by_services, name='by_services'),
     path('<str:page>/', static_page, name='static'),
+    path('production/rezervuar/<slug:slug>', tank_detail, name='rezervyar'),
 ]
 
 if settings.DEBUG:
