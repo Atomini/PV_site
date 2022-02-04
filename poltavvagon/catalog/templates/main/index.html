@@ -4,7 +4,7 @@
 {% load static %}
 
 {% block banner %}
-    <div id="carouselExampleIndicators" class="carousel slide banner" data-bs-ride="carousel">
+    <div id="carouselExampleIndicators" class="carousel slide banner " data-bs-ride="carousel">
         <ol class="carousel-indicators">
 
             {% for banner in banners %}
@@ -27,7 +27,7 @@
                      <div class="carousel-item ">
                 {% endif %}
 
-                    <img src="media/{{ banner.image }}" class="d-block w-100 banner-image" alt="...">
+                    <img src="media/{{ banner.image }}" class="d-block w-100 banner-image kenburns-top" alt="...">
                     <div class="carousel-caption d-none d-md-block">
                     <h5 class="banner-text">{{ banner.name }}</h5>
                     <p class="banner-text">{{ banner.body }}</p>
@@ -57,7 +57,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-xl-5 col-lg-6">
-                    <img src="{% static 'catalog/image/vagon_more.jpg' %}" alt="about" class="img-fluid full-width">
+                    <img src="{% static 'catalog/image/vagon_more.jpg' %}" alt="about" class="img-fluid full-width ">
                 </div>
                 <div class="col-xl-7 col-lg-6 align-self-center">
 
