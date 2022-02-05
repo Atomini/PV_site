@@ -83,6 +83,7 @@ class Tank(models.Model):
     climatic_performance = models.CharField(max_length=20, verbose_name='Климатическое исполнение')
     product_category = models.ForeignKey(ProductionCategory, on_delete=models.CASCADE, verbose_name='Категория',
                                          null=False)
+    description = models.TextField(verbose_name='Описание', blank=True)
     is_active = models.BooleanField(default=True, db_index=True, verbose_name='Выводить в списке?')
     slug = models.SlugField(auto_created=True, blank=False, unique=True)
 
